@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+
+
+
+main(){
+    cout<<"----------------------CALCULATOR-----------------------"<<endl;
+    cout<<endl;
+    cout<<"WELCOME USER!!"<<endl;
+    cout<<endl;
+
+    cout<<"Please select Operation you want to perform"<<endl;
+    cout<<"1.Addition"<<endl;
+    cout<<"2.Subtraction"<<endl;
+    cout<<"3.Multiplication"<<endl;
+    cout<<"4.Division"<<endl;
+    cout<<"5.Exit"<<endl;
+    int x;
+    cin>>x; 
+
+    int a,b,ans;
+    switch (x)
+        {
+        case 1:
+            cout<<"Please provide numbers you want to perform operations on"<<endl;
+            cout<<"Number 1: "<<endl;
+            cin>>a;
+            cout<<"Number 2: "<<endl;
+            cin>>b;
+            ans=a+b;
+            cout<<"Answer is: "<<ans<<endl;
+            break;
+        case 2:
+            cout<<"Please provide numbers you want to perform operations on"<<endl;
+            cout<<"Number 1: "<<endl;
+            cin>>a;
+            cout<<"Number 2: "<<endl;
+            cin>>b;
+            ans=a-b;
+            cout<<"Answer is: "<<ans<<endl;
+            break;
+        case 3:
+            cout<<"Please provide numbers you want to perform operations on"<<endl;
+            cout<<"Number 1: "<<endl;
+            cin>>a;
+            cout<<"Number 2: "<<endl;
+            cin>>b;
+            ans=a*b;
+            cout<<"Answer is: "<<ans<<endl;
+            break;
+        case 4:
+            cout<<"Please provide numbers you want to perform operations on"<<endl;
+            cout<<"Number 1: "<<endl;
+            cin>>a;
+            cout<<"Number 2: "<<endl;
+            cin>>b;
+            ans=a/b;
+            cout<<"Answer is: "<<ans<<endl;
+            break;
+        default:
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+}
