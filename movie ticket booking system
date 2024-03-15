@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+
+
+const int rows=5;
+const int cols=5;
+const double price=10.0;
+
+
+void displaySeating(const char seating[][cols]){
+    cout<<"Seating Arrangement:"<<endl;
+    for(int i=0;i<rows;++i) {
+        for(int j=0;j<cols;++j){
+            cout<<seating[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+
+bool isSeatAvailable(const char seating[][cols],int row,int col){
+    return seating[row][col]=='O';
+}
+
+
+void bookSeat(char seating[][cols],int row,int col){
+    seating[row][col]='X';
+}
+
+
+double calculateTotalCost(int numTickets){
+    return numTickets*price;
+}
+
+main(){
+    char seating[rows][cols];
+
+    
+    for(int i=0;i<rows;++i){
+        for(int j=0;j<cols;++j){
+            seating[i][j]='O';
+        }
+    }
+
+    cout<<"---------------MOVIE TICKET BOOKING SYSTEM-------------"<<endl;
+    cout<<endl;
+
+    while(true){
+        int choice;
+        cout<<"Menu:\n1. View Seating Arrangement\n2. Book Tickets\n3. Quit"<<endl;
+        cout<<"Enter your choice: ";
+        cin>>choice;
+
+        double totalCost=0.0;
+
+        switch(choice){
+            case 1:
+                displaySeating(seating);
+                break;
+            case 2:
+                int numTickets;
+                cout<<"Enter the number of tickets to book: ";
+                cin>>numTickets;
+
+                if(numTickets<= 0){
+                    cout<<"Invalid number of tickets."<<endl;
+                    break;
+                }
+
+                cout<<"Enter the row and column for each ticket (e.g., 1 2):"<<endl;
+                
+                for(int i=0;i<numTickets;++i){
+                    int row,col;
+                    cin>>row>>col;
+
+                    
+                    if(row<1||row>rows||col<1||col>cols||!isSeatAvailable(seating,row-1,col-1)){
+                        cout<<"Invalid seat selection. Please try again."<<endl;
+                        i--;  
+                    } 
+                    else{
+                        bookSeat(seating,row-1,col-1);
+                        totalCost+=price;
+                    }
+                }
+
+                cout<<"Tickets booked successfully!"<<endl;
+                cout<<"Total cost: Rs. " <<totalCost<<endl;
+                break;
+            case 3:
+                cout<<"Thank you for using the Movie Ticket Booking System. Goodbye!"<<endl;
+                break;
+            default:
+                cout<<"Invalid choice. Please try again."<<endl;
+        }
+    }
+}
